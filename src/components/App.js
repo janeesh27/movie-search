@@ -7,18 +7,29 @@ class App extends Component {
     this.state = {
       movies: [],
       searchTerm: "",
-    }
+    };
     this.apiKey = process.env.React_APP_API;
   }
 
-  handleSubmit= ()=>{
-    fetch(``)
-  }
+  handleSubmit = (e) => {
+    e.preventdefault();
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.state.searchTerm}`
+    )
+      .then((data) => data.json())
+      .then((data) => {
+        this.setState({ movies: [...data.results] });
+      });
+  };
+
+  handleChange = (e) => {
+    this.setState({ searchTerm: e.target.value });
+  };
 
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
       </div>
     );
   }

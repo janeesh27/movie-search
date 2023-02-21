@@ -1,20 +1,24 @@
-import React from 'react'
-import './Navbar.css'
-const Navbar = () => {
+import React from "react";
+import "./Navbar.css";
+
+// import { AST_PropAccess } from "terser";
+
+const Navbar = (props) => {
   return (
     <div class="navbar">
-  <div class="navbar-container">
-    <a class="navbar-logo" href="#">Movie Search</a>
-    <div class="navbar-search">
-      <form action="#" method="get">
-        <input type="text" name="search" placeholder="Search" />
-        <button type="submit">Search</button>
-      </form>
+      <div class="navbar-container">
+        <a class="navbar-logo" href="/">
+          Movie Search
+        </a>
+        <div class="navbar-search">
+          <form action="#" onSubmit={props.handleSubmit}>
+            <input type="text" name="search" placeholder="Search" onChange={props.handleChange} />
+            <button type="submit" onClick={props.handleSubmit}>Search</button>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  );
+};
 
-  )
-}
-
-export default Navbar
+export default Navbar;
