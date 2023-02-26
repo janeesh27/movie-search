@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 
-// import { AST_PropAccess } from "terser";
+
 
 const Navbar = (props) => {
   return (
